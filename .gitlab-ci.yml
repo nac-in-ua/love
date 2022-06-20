@@ -1,3 +1,0 @@
-include:
-  - project: 'nac.in.ua/infra/ci/frontend'
-    file: 'templates/general/.pipeline.yml'
