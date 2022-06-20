@@ -1,7 +1,3 @@
-[![pipeline status](https://gitlab.com/nac.in.ua/love/badges/master/pipeline.svg)](https://gitlab.com/nac.in.ua/love/-/commits/master)
-[![coverage report](https://gitlab.com/nac.in.ua/love/badges/master/coverage.svg)](https://gitlab.com/nac.in.ua/love/-/commits/master)
-[![Latest Release](https://gitlab.com/nac.in.ua/love/-/badges/release.svg)](https://gitlab.com/nac.in.ua/love/-/releases)
-
 ## Available Scripts
 
 In the project directory, you can run this scripts:
