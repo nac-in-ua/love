@@ -17,7 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "import", "jest", "no-unsafe-innerhtml", "security"],
+  "plugins": ["react", "import", "jest", "security"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -28,7 +28,6 @@
     "jest/valid-expect": "error",
     "quotes": [2, "single", { "avoidEscape": true }],
     /** security plugin rules **/
-    "no-unsafe-innerhtml/no-unsafe-innerhtml": 2,
     "security/detect-non-literal-fs-filename": 2,
     "security/detect-non-literal-regexp": 2,
     "security/detect-unsafe-regex": 2,
