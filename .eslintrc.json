@@ -1,0 +1,71 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:security/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "import", "jest", "no-unsafe-innerhtml", "security"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "quotes": [2, "single", { "avoidEscape": true }],
+    /** security plugin rules **/
+    "no-unsafe-innerhtml/no-unsafe-innerhtml": 2,
+    "security/detect-non-literal-fs-filename": 2,
+    "security/detect-non-literal-regexp": 2,
+    "security/detect-unsafe-regex": 2,
+    "security/detect-buffer-noassert": 2,
+    "security/detect-child-process": 2,
+    "security/detect-disable-mustache-escape": 2,
+    "security/detect-eval-with-expression": 2,
+    "security/detect-no-csrf-before-method-override": 2,
+    "security/detect-non-literal-require": 2,
+    "security/detect-object-injection": 2,
+    "security/detect-possible-timing-attacks": 1,
+    "security/detect-pseudoRandomBytes": 2
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "fragment": "Fragment",
+      "version": "detect",
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      { "property": "freeze", "object": "Object" },
+      { "property": "myFavoriteWrapper" },
+      { "property": "forbidExtraProps", "exact": true }
+    ],
+    "componentWrapperFunctions": [
+      "observer",
+      { "property": "styled" },
+      { "property": "observer", "object": "Mobx" },
+      { "property": "observer", "object": "<pragma>" }
+    ],
+    "formComponents": [
+      "CustomForm",
+      { "name": "Form", "formAttribute": "endpoint" }
+    ],
+    "linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }]
+  }
+}
