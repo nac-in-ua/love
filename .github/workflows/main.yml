@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build
-          path: ${{ github.workspace }}/build
+          path: build
   
   deploy:
     runs-on: ubuntu-latest
