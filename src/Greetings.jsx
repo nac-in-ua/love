@@ -1,8 +1,8 @@
 function Greetings() {
   return (
     <>
-      <h1 className="font-roboto font-light text-center text-5xl text-stone-200 my-10">
-        I love you so much!
+      <h1 className="my-10 text-center font-roboto text-5xl font-light text-stone-200">
+        I love you so0 much!
       </h1>
     </>
   )
