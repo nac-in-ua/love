@@ -37,14 +37,16 @@ jobs:
       - test
     environment:
       name: preview
-      url: ${{ steps.vercel-preview.outputs }}
+      url: ${{ steps.vercel-preview.outputs.preview_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Deploy Vercel
         id: vercel-preview
-        run: VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID}} VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID}} npx vercel --scope nac-in-ua --token=${{ secrets.VERCEL_TOKEN }}
+        # run: VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID}} VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID}} npx vercel --scope nac-in-ua --token=${{ secrets.VERCEL_TOKEN }} >> $GITHUB_ENV
+        # run: VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID}} VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID}} npx vercel --scope nac-in-ua --token=${{ secrets.VERCEL_TOKEN }}
+        run: echo "::set-output name=preview_url::$(VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID}} VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID}} npx vercel --scope nac-in-ua --token=${{ secrets.VERCEL_TOKEN }})"
 
   # build:
   #   runs-on: ubuntu-latest
