@@ -37,7 +37,7 @@ jobs:
       - test
     environment:
       name: preview
-      url: ${{ steps.deploy-vercel-preview.outputs.preview-url }}
+      url: ${{ steps.deploy-vercel-preview.outputs }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
