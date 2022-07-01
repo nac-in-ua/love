@@ -1,4 +1,4 @@
-name: Runs All Checks and Deploy
+name: PR and Main
 
 on:
   push:
