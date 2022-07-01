@@ -1,19 +1,42 @@
-name: Deployment Failure notification
+name: Playwright Tests
 
 on: [deployment_status]
 
 jobs:
   e2e:
+    timeout-minutes: 60
     name: e2e tests
     if: ${{ github.event.deployment_status.state == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: debug
-        uses: hmarr/debug-action@master
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
         env:
-          TEST_URL: ${{ github.event.deployment_status.target_url }}
-      - name: test url
-        run: echo ${{github.event.deployment_status.target_url}}
-        # run: echo "$GITHUB_CONTEXT"
+          SITE_URL: ${{ github.event.deployment_status.target_url }}
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      # - name: debug
+      #   uses: hmarr/debug-action@master
+      #   env:
+      #     TEST_URL: ${{ github.event.deployment_status.target_url }}
+      # - name: test url
+      #   run: echo ${{github.event.deployment_status.target_url}}
