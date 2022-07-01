@@ -27,19 +27,9 @@ jobs:
         env:
           SITE_URL: ${{ github.event.deployment_status.target_url }}
 
-      - name: List Directory
-        run: ls
-
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
           path: playwright-report
           retention-days: 30
-
-      # - name: debug
-      #   uses: hmarr/debug-action@master
-      #   env:
-      #     TEST_URL: ${{ github.event.deployment_status.target_url }}
-      # - name: test url
-      #   run: echo ${{github.event.deployment_status.target_url}}
