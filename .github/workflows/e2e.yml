@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test url
-        # preview_url
-        run: echo "$GITHUB_CONTEXT"
+        run: echo '${github.event.deployment_status.target_url}'
+        # run: echo "$GITHUB_CONTEXT"
