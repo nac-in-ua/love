@@ -1,0 +1,13 @@
+name: Deployment Failure notification
+
+on: [deployment_status]
+
+jobs:
+  e2e:
+    name: e2e tests
+    if: github.event.deployment_status.state == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: test url
+        # preview_url
+        run: echo '${github.event}'
