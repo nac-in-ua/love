@@ -8,6 +8,12 @@ jobs:
     if: ${{ github.event.deployment_status.state == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: debug
+        uses: hmarr/debug-action@master
+        env:
+          TEST_URL: ${{ github.event.deployment_status.target_url }}
       - name: test url
-        run: echo '${github.event.deployment_status.target_url}'
+        run: echo ${{github.event.deployment_status.target_url}}
         # run: echo "$GITHUB_CONTEXT"
