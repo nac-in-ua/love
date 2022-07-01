@@ -57,40 +57,42 @@ jobs:
   #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
 
-  build:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # build:
+  #   runs-on: ubuntu-latest
+  #   needs: [test]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Cache Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+  #     - name: Cache Dependencies
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: ${{ runner.os }}-node-
 
-      - name: Setup Node 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+  #     - name: Setup Node 16
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16'
 
-      - name: Install Dependencies
-        run: npm ci
+  #     - name: Install Dependencies
+  #       run: npm ci
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: dist
+  #     - name: upload build artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build
+  #         path: dist
   
   preview:
     runs-on: ubuntu-latest
-    needs: [build]
+    # needs: [build]
+    needs:
+      - test
     environment:
       name: preview
       url: ${{ steps.vercel-preview.outputs.preview-url }}
