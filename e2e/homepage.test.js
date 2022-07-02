@@ -9,4 +9,8 @@ test.describe('main text', () => {
     const title = page.locator('h1')
     await expect(title).toHaveText(/I love you so much!/i)
   })
+
+  test('match screenshot', async ({ page }) => {
+    await expect(page).toHaveScreenshot()
+  })
 })

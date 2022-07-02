@@ -27,7 +27,7 @@
     "test:e2e:webkit": "npx playwright test --project=webkit",
     "test:e2e:mobile-android": "npx playwright test --project='Mobile Chrome'",
     "test:e2e:mobile-safari": "npx playwright test --project='Mobile Safari'",
-    "test:e2e:container": "docker run --rm --network host -e E2E_DOMAIN=10.195.128.30:30331 -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.21.0-focal /bin/bash -c 'cd /var/app; npx playwright install; DEBUG=pw:browser* npm run test:e2e'",
+    "test:e2e:container": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.23.1-focal /bin/bash -c 'npm install; npx playwright test --update-snapshots'",
     "lint": "eslint --ignore-path .eslintignore -f junit -o reports/eslint-report.xml .",
     "format": "prettier .  --check"
   },
