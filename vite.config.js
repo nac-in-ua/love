@@ -2,7 +2,11 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import eslintPlugin from 'vite-plugin-eslint'
 
-const DEV_SERVER_PORT = 30331
+const path = require('path')
+require('dotenv').config({
+  path: path.resolve(__dirname, './env', '.env'),
+})
+
 const isProd = () => (process.env.APP_ENV == 'production' ? true : false)
 const isForProd = isProd()
 const buildConfig = {
@@ -14,7 +18,7 @@ export default defineConfig({
   plugins: [react(), eslintPlugin(), splitVendorChunkPlugin()],
   server: {
     host: true,
-    port: DEV_SERVER_PORT,
+    port: process.env.PORT,
     open: true,
   },
   test: {
