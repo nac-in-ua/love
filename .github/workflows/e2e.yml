@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: debug
+        uses: hmarr/debug-action@master
+
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
