@@ -1,13 +1,13 @@
 name: E2E Tests
 
-# on: [deployment_status]
-on: [deployment]
+on: [deployment_status]
+# on: [deployment]
 
 jobs:
   e2e:
     timeout-minutes: 60
     name: e2e tests
-    # if: ${{ github.event.deployment_status.state == 'success' }}
+    if: ${{ github.event.deployment_status.state == 'success' }} && ${{ github.event.deployment_status.environment == 'Preview – love' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
