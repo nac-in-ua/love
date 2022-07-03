@@ -1,7 +1,6 @@
 name: E2E Tests
 
 on: [deployment_status]
-# on: [deployment]
 
 jobs:
   e2e:
