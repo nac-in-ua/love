@@ -16,6 +16,7 @@ const { devices } = require('@playwright/test')
   */
  const config = {
    testDir: './e2e',
+   testIgnore: ['**/test-results/**'],
    /* Maximum time one test can run for. */
    timeout: 30 * 1000,
    expect: {
