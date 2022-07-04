@@ -14,7 +14,7 @@
     "test:unit": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "test:ci": "vitest run --coverage --reporter=junit --outputFile='coverage/junit.xml'",
+    "test:ci": "npm run test:unit",
     "test:e2e": "npx playwright test",
     "test:e2e:container": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.23.1-focal /bin/bash -c 'npm install; npx playwright test'",
     "test:e2e:update-screenshots": "npx playwright test --update-snapshots",
